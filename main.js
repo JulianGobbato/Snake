@@ -21,7 +21,7 @@ const DIRECTION = {
 let keyPressed
 let snakeColour = "black"
 let foodColour = randomColor()
-let controls = {direction:{x: 1, y: 0,}, snake:[{x:10,y:10}], food:{x: 20, y: 20}, playing: false, increase: 0, difucult: 0, score: 0}
+let controls = {direction:{x: 1, y: 0,}, snake:[{x:10,y:10}], food:{x: 20, y: 20}, playing: false, increase: 0, difucult: 0, score: 0, keyPressedOnThisLoop: false}
 for (let index = 0; index < btns.length; index++) {
     btns[index].addEventListener("click", function() {
         let active = document.getElementsByClassName("active");
@@ -60,6 +60,7 @@ if (screenWidth < 500){
 
 let looper = ()=>{
     if (controls.playing){
+        controls.keyPressedOnThisLoop = false
         let tail = {}
         Object.assign(tail,controls.snake[controls.snake.length-1])
         let fullSnake = controls.snake.length-1
@@ -153,9 +154,12 @@ let startGame = ()=>{
 document.onkeydown = (e)=>{
     keyPressed = DIRECTION[e.key]
     let [x, y] = keyPressed
-    if(x !== controls.direction.x && y !== controls.direction.y){
-        controls.direction.x = x
-        controls.direction.y = y
+    if (controls.keyPressedOnThisLoop == false){
+        if(x !== controls.direction.x && y !== controls.direction.y){
+            controls.direction.x = x
+            controls.direction.y = y
+            controls.keyPressedOnThisLoop = true
+        }
     }
 }
 let directinalBtn = document.getElementsByClassName("directionalBTN")
@@ -164,10 +168,13 @@ for (let index = 0; index < directinalBtn.length; index++) {
     btn.addEventListener("click", ()=>{
         keyPressed = DIRECTION[btn.id]
         let [x, y] = keyPressed
-        if(x !== controls.direction.x && y !== controls.direction.y){
-        controls.direction.x = x
-        controls.direction.y = y
-    }
+        if (controls.keyPressedOnThisLoop == false){
+            if(x !== controls.direction.x && y !== controls.direction.y){
+                controls.direction.x = x
+                controls.direction.y = y
+                controls.keyPressedOnThisLoop = true
+            }
+        }
     })
 }
 window.onload = ()=>{
