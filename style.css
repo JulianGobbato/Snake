@@ -1,0 +1,68 @@
+body{
+    margin: 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'minecraftmedium';
+}
+h1{
+    margin: 0px;
+    margin-bottom: 5px;
+}
+p{
+    margin: 0px;
+    margin-bottom: 5px;
+}
+canvas{
+    background: white;
+    border: solid black 5px;
+}
+.btn{
+    font-family: 'minecraftmedium';
+    font-size: 20px;
+    border: solid 3px #333;
+    border-bottom-left-radius: 25%100% ;
+    border-top-left-radius: 25%100%;
+    border-bottom-right-radius: 25%100% ;
+    border-top-right-radius: 25%100%;
+    margin: 10px;
+    margin-bottom: 20px;
+    padding: 10px 20px 5px 25px;
+    box-shadow: 0 9px #999;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn:focus-visible{
+    outline: none;
+}
+.active{
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
+}
+.active:hover{
+    cursor: default;
+}
+#btn-e{
+    background: #4DB947;
+}
+#btn-n{
+    background: #FEC916;
+}
+#btn-h{
+    background: #FF2969;
+}
+.directionalBTN{
+    border: solid black 2px;
+    padding: 6px;
+    margin: 2px;
+}
+#directional-buttons{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #directional-buttons{
+        display: block;
+    }
+}
